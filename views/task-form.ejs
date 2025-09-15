@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= task ? 'Edit Task' : 'New Task' %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><%= task ? 'Edit Task' : 'Create a New Task' %></h1>
+        
+        <form action="<%= task ? '/tasks/edit/' + task.id : '/tasks' %>" method="POST">
+            <input type="text" name="title" placeholder="titulo da tarefa" value="<%= task ? task.title : '' %>" required>
+            <textarea name="description" placeholder="descricao da tarefa"><%= task ? task.description : '' %></textarea>
+            <button type="submit"><%= task ? 'Atualizar Tarefa' : 'Adicionar Tarefa' %></button>
+        </form>
+        <a href="/tasks">Volta Para Tarefas</a>
+    </div>
+</body>
+</html>

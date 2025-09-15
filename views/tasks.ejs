@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minhas Tarefas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bem-vindo, <%= user.name %>!</h1>
+            <a href="/user/logout" class="logout-btn">Sair</a>
+        </header>
+
+        <h2>Minhas Tarefas</h2>
+        <a href="/tasks/new" class="btn-new-task">Adicionar Nova Tarefa</a>
+
+        <ul class="task-list">
+            <% if (tasks.length > 0) { %>
+                <% tasks.forEach(task => { %>
+                    <li class="task-item <%= task.completed ? 'Concluir' : '' %>">
+                        <div class="task-content">
+                            <h3><%= task.title %></h3>
+                            <p><%= task.description %></p>
+                        </div>
+                        <div class="task-actions">
+                            <a href="/tasks/complete/<%= task.id %>" class="btn-action">
+                                <%= task.completed ? 'Desfazer' : 'Concluir' %>
+                            </a>
+                            <a href="/tasks/edit/<%= task.id %>" class="btn-action">Editar</a>
+                            <a href="/tasks/delete/<%= task.id %>" class="btn-action btn-delete" onclick="return confirm('Tem certeza?')">Deletar</a>
+                        </div>
+                    </li>
+                <% }) %>
+            <% } else { %>
+                <p>Você ainda não criou nenhuma tarefa!</p>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>

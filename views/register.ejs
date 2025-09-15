@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro</h1>
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+        <form action="/user/register" method="POST">
+            <input type="text" name="name" placeholder="Nome Completo" required>
+            <input type="text" name="username" placeholder="Nome de Usuario" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <button type="submit">Registro</button>
+        </form>
+        <p>Ja tem uma conta? <a href="/login">Login aqui</a></p>
+    </div>
+</body>
+</html>
